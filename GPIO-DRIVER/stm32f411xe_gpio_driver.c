@@ -51,6 +51,8 @@ static void config_afr(GPIO_TypeDef *pGPIOx, uint32_t pinNumber, uint32_t afrNum
 }
 
 
+/******************************************************** DRIVER EXPOSED APIs *******************************************************/
+
 
 /**************** INITIALIZING GPIO PIN *****************/
 
@@ -127,22 +129,15 @@ uint32_t read_multiple_gpio_pin(GPIO_TypeDef *pGPIOx, uint32_t basePin, uint32_t
 	return value;
 }
 
-void write_multiple_gpio_pin(GPIO_TypeDef *pGPIOx, uint32_t basePin, uint32_t value) {
+void write_multiple_gpio_pin(GPIO_TypeDef *pGPIOx, uint32_t basePin, uint32_t value, uint32_t len) {
 
-	uint32_t len = 1;
-	uint32_t temp = value;
-	while(temp!=1) {
-		temp = temp/2;
-		len += 1;
-	}
-	
 	uint32_t mask_value = 1;
 	for(uint32_t i=0; i<len; i++) {
 		mask_value *= 2;
 	}
 	mask_value -= 1;
 	
-	pGPIOx->ODR &= ~( mask_value << basePin );
+	pGPIOx->ODR &= ~(mask_value<<basePin);
 	pGPIOx->ODR |= (value<<basePin);
 
 }
@@ -196,12 +191,14 @@ void clear_interrupt (uint32_t pinNumber) {
 
 void delay_low(void) {
 
-	for(uint32_t i=0; i<500000; i++);
+	for(uint32_t i=0; i<200000; i++);
 	
 }
 
 void delay_medium(void) {
 
+	delay_low();
+	delay_low();
 	delay_low();
 	delay_low();
 	delay_low();
@@ -216,11 +213,4 @@ void delay_high(void) {
 	
 }
 
-void delay_very_high(void) {
-
-	for(uint32_t i=0; i<20; i++) {
-		delay_low();
-	}
-	
-}
 

@@ -4,12 +4,16 @@ void init_peripherals(void);
 
 int main() {
 
-	//toggle all the leds on the board
+	//program to toggle all the LEDS on the discovery board (GPIOD pin 12, 13, 14, 15)
 	
+	//0. enable the peripheral clock for GPIOD
+	/******* read more about this in the README *******/
+	//RCC->AHB1ENR |= (1<<3);
 	
 	//1. initialize the pins
 	init_peripherals();
 	
+	//example of how to use write_multiple_gpio_pin
 	write_multiple_gpio_pin(GPIOD, GPIO_PIN_12, 0xF);
 	
 	while(1) {
@@ -26,6 +30,8 @@ int main() {
 }
 
 
+//using the driver to initialize peripherals
+//can be done in main as well
 void init_peripherals(void) {
 
 	GPIO_InitTypedef gpioInit;
