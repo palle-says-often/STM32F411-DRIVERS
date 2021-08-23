@@ -16,6 +16,7 @@ int main(void) {
 		*(phoneNumber+i) = keypad_readKeyInASCII();
 	
 	}
+	//read the number in debug mode
 	
 	
 	return 0;

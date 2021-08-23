@@ -41,6 +41,19 @@ void keypad_Init(void);
 */
 
 uint8_t keypad_readKeyInASCII(void);
+/*
+
+	returns the key pressed on the keypad upon function call in ASCII format.
+
+*/
+
+uint8_t keypad_readKeyInHex(void);
+/*
+
+	returns the key pressed in HEX format
+	Note: * is taken as 0x0E and # is taken as 0x0F
+
+*/
 
 
 #endif
