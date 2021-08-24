@@ -6,7 +6,7 @@
 
 /********************************************** GPIO DEFINITIONS ****************************************/
 
-#define CLK_PORT										GPIOD
+#define CLK_PORT									  GPIOD
 #define CLK_PIN											1
 
 #define DIO_PORT										GPIOD
