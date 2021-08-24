@@ -6,11 +6,11 @@
 
 /********************************************** GPIO DEFINITIONS ****************************************/
 
-#define CLK_PORT							GPIOD
-#define CLK_PIN								1
+#define CLK_PORT										GPIOD
+#define CLK_PIN											1
 
-#define DIO_PORT							GPIOD
-#define DIO_PIN								0
+#define DIO_PORT										GPIOD
+#define DIO_PIN											0
 
 
 /********************************************** TM1637 COMMANDS DEFINITIONS *********************************/
@@ -28,7 +28,7 @@
 
 // DISPLAY CONTROL
 
-#define TM1637_DISPLAY_ON					TM1637_BRIGHTNESS_3
+#define TM1637_DISPLAY_ON						0x88
 #define TM1637_DISPLAY_OFF					0X80
 
 // REGISTER ADDRESSES
@@ -41,13 +41,11 @@
 
 /********************************************** GPIO STATE DEFINITIONS *************************************/
 
-#define CLK_LOW()							( CLK_PORT->ODR &= ~(1U << CLK_PIN) )
-#define CLK_HIGH()							( CLK_PORT->ODR |= (1U << CLK_PIN) )
+#define CLK_LOW()										( CLK_PORT->ODR &= ~(1U << CLK_PIN) )
+#define CLK_HIGH()									( CLK_PORT->ODR |= (1U << CLK_PIN) )
 
-#define DIO_LOW()							( DIO_PORT->ODR &= ~(1U << DIO_PIN) )
-#define DIO_HIGH()							( DIO_PORT->ODR |= (1U << DIO_PIN) )
-
-
+#define DIO_LOW()										( DIO_PORT->ODR &= ~(1U << DIO_PIN) )
+#define DIO_HIGH()									( DIO_PORT->ODR |= (1U << DIO_PIN) )
 
 
 /********************************************* APIs *************************************************/
@@ -68,14 +66,12 @@ void tm1637_displayOn(void);
  *
  */
 
-
 void tm1637_displayOff(void);
 /*
  *
  * Turns of the display, doesn't remove the data from the registers
  *
  */
-
 
 void tm1637_setBrightness(uint8_t intensity);
 /*
@@ -89,22 +85,19 @@ void tm1637_setBrightness(uint8_t intensity);
  *
  */
 
-
 void tm1637_showColon(void);
 /*
  *
- *
+ * Puts on the colon between display 2 and display 3 if hidden
  *
  */
-
 
 void tm1637_hideColon(void);
 /*
  *
- *
+ * Hides the colon if active
  *
  */
-
 
 void tm1637_putNumbers(uint8_t dig1, uint8_t dig2, uint8_t dig3, uint8_t dig4, uint8_t colon);
 /*
@@ -118,7 +111,6 @@ void tm1637_putNumbers(uint8_t dig1, uint8_t dig2, uint8_t dig3, uint8_t dig4, u
  *
  */
 
-
 void tm1637_putNumber_4Dig(uint32_t num, uint8_t colon);
 /*
  *
@@ -127,7 +119,6 @@ void tm1637_putNumber_4Dig(uint32_t num, uint8_t colon);
  *
  */
 
-
 void tm1637_putNumber_Custom(uint8_t addr, uint8_t num);
 /*
  *
@@ -135,7 +126,6 @@ void tm1637_putNumber_Custom(uint8_t addr, uint8_t num);
  * Example:		tm1637_putNumber_Custom(TM1637_DISPLAY4_ADDR, 1);	//displays 1 on the 4th display from the left
  *
  */
-
 
 void tm1637_putChar_Custom(uint8_t addr, uint8_t hgfedcba);
 /*
