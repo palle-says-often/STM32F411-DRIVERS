@@ -6,11 +6,11 @@
 
 /********************************************** GPIO DEFINITIONS ****************************************/
 
-#define CLK_PORT									  GPIOD
-#define CLK_PIN											1
+#define CLK_PORT							GPIOD
+#define CLK_PIN								1
 
-#define DIO_PORT										GPIOD
-#define DIO_PIN											0
+#define DIO_PORT							GPIOD
+#define DIO_PIN								0
 
 
 /********************************************** TM1637 COMMANDS DEFINITIONS *********************************/
@@ -28,7 +28,7 @@
 
 // DISPLAY CONTROL
 
-#define TM1637_DISPLAY_ON						0x88
+#define TM1637_DISPLAY_ON					0x88
 #define TM1637_DISPLAY_OFF					0X80
 
 // REGISTER ADDRESSES
@@ -41,11 +41,11 @@
 
 /********************************************** GPIO STATE DEFINITIONS *************************************/
 
-#define CLK_LOW()										( CLK_PORT->ODR &= ~(1U << CLK_PIN) )
-#define CLK_HIGH()									( CLK_PORT->ODR |= (1U << CLK_PIN) )
+#define CLK_LOW()							( CLK_PORT->ODR &= ~(1U << CLK_PIN) )
+#define CLK_HIGH()							( CLK_PORT->ODR |= (1U << CLK_PIN) )
 
-#define DIO_LOW()										( DIO_PORT->ODR &= ~(1U << DIO_PIN) )
-#define DIO_HIGH()									( DIO_PORT->ODR |= (1U << DIO_PIN) )
+#define DIO_LOW()							( DIO_PORT->ODR &= ~(1U << DIO_PIN) )
+#define DIO_HIGH()							( DIO_PORT->ODR |= (1U << DIO_PIN) )
 
 
 /********************************************* APIs *************************************************/
